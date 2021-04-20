@@ -1,0 +1,108 @@
+{
+  "version": "4.5.7",
+  "flags": {},
+  "shapes": [
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "clear_pet_bottles_food",
+      "points": [
+        [1628.0, 407.0],
+        [1813.0, 970.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "bottle_covered",
+      "points": [
+        [1600.0, 1167.0],
+        [1811.0, 1510.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "clear_pet_bottles_food",
+      "points": [
+        [771.0, 704.0],
+        [997.0, 1096.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "clear_pet_bottles_food",
+      "points": [
+        [1116.0, 0.0],
+        [1391.0, 340.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "clear_pet_bottles_food",
+      "points": [
+        [720.0, 0.0],
+        [1048.0, 214.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "flexible_film",
+      "points": [
+        [838.0, 73.0],
+        [1070.0, 458.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "plastic_conflict",
+      "points": [
+        [498.0, 861.0],
+        [896.0, 1300.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "line_color": {},
+      "fill_color": {},
+      "label": "flexible_film",
+      "points": [
+        [1386.0, 123.0],
+        [1582.0, 321.0]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    }
+  ],
+  "imagePath": "1025_377507.jpg",
+  "imageData": null,
+  "imageHeight": 1536,
+  "imageWidth": 2048,
+  "fillColor": [255, 0, 0, 128],
+  "lineColor": [0, 255, 0, 128]
+}
