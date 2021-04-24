@@ -10,6 +10,15 @@ connection = pymysql.connect(host='',
                              database='zhengshi_labelhub',
                              cursorclass=pymysql.cursors.DictCursor)
 
+label_map = {
+    'brown_board': 'corrugated_cardboard',
+    'hdpe_bottles_natural': 'natural_hdpe_bottles_food',
+    'pet_bottles_clear': 'clear_pet_bottles_food',
+    'plastic_bottles_coloured': 'coloured_pet_bottles_nonfood',
+    'plastic_pots_tubs_trays': 'other_plastic',
+    'uncertain': 'uncertain_class'
+}
+
 def load_json(path):
     for root, dirs, filelist in os.walk(path):
         for filename in filelist:
@@ -24,20 +33,24 @@ def load_json(path):
                         label_data = dict()
                         # print(i, ' ---------- shape item ------')
                         with connection.cursor() as cursor:
-                            sql = 'SELECT * FROM product WHERE id = 8859;'
+                            sql = 'SELECT * FROM product WHERE id = 8905;'
                             cursor.execute(sql)
                             result = cursor.fetchone()
-
+                            
+                            
                             for j in json.loads(result["label"])["tools"]:
-                                # print(j, ' tools ----------------')
-                                if i["label"] == j["name"]:
+                                if i["label"] in label_map:
+                                    label_data["name"] = label_map[i["label"]]
+                                else:
                                     label_data["name"] = j["name"]
+                            for j in json.loads(result["label"])["tools"]:
+                                if label_data["name"] == j["name"]:
                                     label_data["uuid"] = str(uuid.uuid4())
-                                    label_data["color"] = j["color"]
                                     label_data["radius"] = 3
                                     label_data["isFilling"] = str(False)
                                     label_data["related"] = []
                                     label_data["id"] = j["id"]
+                                    label_data["color"] = j["color"]
                                     label_data["subarea"] = 1
                                     label_data["tool"] = i["shape_type"]
                                     label_data["isClosed"] = str(True)
@@ -66,7 +79,7 @@ def load_json(path):
                         root_data["svgArr"].append(label_data)
                         
                 with connection.cursor() as cursor:
-                    sql = "SELECT * FROM product_record_detail WHERE pid = 8859;"
+                    sql = "SELECT * FROM product_record_detail WHERE pid = 8905;"
                     cursor.execute(sql)
                     product_data = cursor.fetchall()
                     for pdata in product_data:
