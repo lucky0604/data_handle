@@ -4,7 +4,7 @@ import json
 import os
 from pymysql.converters import escape_string
 
-connection = pymysql.connect(host='',
+connection = pymysql.connect(host='rm-bp1r66l8s2tl5q81jfo.mysql.rds.aliyuncs.com',
                              user='labelhub_user',
                              password='Jxxl-label2020',
                              database='zhengshi_labelhub',
@@ -33,7 +33,7 @@ def load_json(path):
                         label_data = dict()
                         # print(i, ' ---------- shape item ------')
                         with connection.cursor() as cursor:
-                            sql = 'SELECT * FROM product WHERE id = 8905;'
+                            sql = 'SELECT * FROM product WHERE id = 8927;'
                             cursor.execute(sql)
                             result = cursor.fetchone()
                             
@@ -79,7 +79,7 @@ def load_json(path):
                         root_data["svgArr"].append(label_data)
                         
                 with connection.cursor() as cursor:
-                    sql = "SELECT * FROM product_record_detail WHERE pid = 8905;"
+                    sql = "SELECT * FROM product_record_detail WHERE pid = 8927;"
                     cursor.execute(sql)
                     product_data = cursor.fetchall()
                     for pdata in product_data:
