@@ -11,4 +11,4 @@ def delete_imgData(path):
                     with open(os.path.join(root, filename), 'w') as wf:
                         json.dump(json_obj, wf)
 
-delete_imgData('./2020100505')
+delete_imgData('./data')
