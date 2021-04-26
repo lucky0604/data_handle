@@ -1,0 +1,29 @@
+{
+	"fillColor":[255,0,0,128],
+	"imageWidth":2048,
+	"imageData":null,
+	"imagePath":"2758_088697.jpg",
+	"shapes":[
+		{
+			"flags":{},
+			"shape_type":"rectangle",
+			"label":"pet_bottles_clear",
+			"line_color":{},
+			"fill_color":{},
+			"points":[
+				[
+					1338,
+					0
+				],
+				[
+					1687,
+					223
+				]
+			]
+		}
+	],
+	"flags":{},
+	"lineColor":[0,255,0,128],
+	"version":"LMAI",
+	"imageHeight":1536
+}

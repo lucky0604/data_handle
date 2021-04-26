@@ -1,0 +1,29 @@
+{
+	"fillColor":[255,0,0,128],
+	"imageWidth":2048,
+	"imageData":null,
+	"imagePath":"2125_388173.jpg",
+	"shapes":[
+		{
+			"flags":{},
+			"shape_type":"rectangle",
+			"label":"fines",
+			"line_color":{},
+			"fill_color":{},
+			"points":[
+				[
+					1518,
+					1234
+				],
+				[
+					1580,
+					1358
+				]
+			]
+		}
+	],
+	"flags":{},
+	"lineColor":[0,255,0,128],
+	"version":"LMAI",
+	"imageHeight":1536
+}

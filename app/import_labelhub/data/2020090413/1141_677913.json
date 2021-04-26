@@ -1,0 +1,29 @@
+{
+	"fillColor":[255,0,0,128],
+	"imageWidth":2048,
+	"imageData":null,
+	"imagePath":"1141_677913.jpg",
+	"shapes":[
+		{
+			"flags":{},
+			"shape_type":"rectangle",
+			"label":"graphic_paper",
+			"line_color":{},
+			"fill_color":{},
+			"points":[
+				[
+					732,
+					1017
+				],
+				[
+					1140,
+					1312
+				]
+			]
+		}
+	],
+	"flags":{},
+	"lineColor":[0,255,0,128],
+	"version":"LMAI",
+	"imageHeight":1536
+}

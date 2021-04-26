@@ -1,0 +1,29 @@
+{
+	"fillColor":[255,0,0,128],
+	"imageWidth":2048,
+	"imageData":null,
+	"imagePath":"1905_750558.jpg",
+	"shapes":[
+		{
+			"flags":{},
+			"shape_type":"rectangle",
+			"label":"flexible_film",
+			"line_color":{},
+			"fill_color":{},
+			"points":[
+				[
+					1228,
+					32
+				],
+				[
+					1706,
+					474
+				]
+			]
+		}
+	],
+	"flags":{},
+	"lineColor":[0,255,0,128],
+	"version":"LMAI",
+	"imageHeight":1536
+}
