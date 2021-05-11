@@ -20,6 +20,7 @@ label_map = {
 }
 
 def load_json(path):
+    count = 0
     for root, dirs, filelist in os.walk(path):
         for filename in filelist:
             if filename.split('.')[-1] == 'json':
@@ -36,8 +37,8 @@ def load_json(path):
                             sql = 'SELECT * FROM product WHERE id = 8927;'
                             cursor.execute(sql)
                             result = cursor.fetchone()
-                            
-                            
+                            count = count + 1
+                            print(count)
                             for j in json.loads(result["label"])["tools"]:
                                 if i["label"] in label_map:
                                     label_data["name"] = label_map[i["label"]]
@@ -93,6 +94,8 @@ def load_json(path):
                             except:
                                 raise "failed"
                             print(str(root_data).replace("'", '"'), ' ------------ root data ==========')
+                    cursor.close()
+                            
 
 
 # with connection.cursor() as cursor:
