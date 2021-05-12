@@ -20,6 +20,7 @@ label_map = {
 }
 
 def load_json(path):
+    count = 0
     for root, dirs, filelist in os.walk(path):
         for filename in filelist:
             if filename.split('.')[-1] == 'json':
@@ -30,10 +31,12 @@ def load_json(path):
                     json_data = json.load(f)
                     shape_data = json_data["shapes"]
                     for i in shape_data:
+                        count = count + 1
+                        print(count, ' count =======')
                         label_data = dict()
                         # print(i, ' ---------- shape item ------')
                         with connection.cursor() as cursor:
-                            sql = 'SELECT * FROM product WHERE id = 8927;'
+                            sql = 'SELECT * FROM product WHERE id = 8928;'
                             cursor.execute(sql)
                             result = cursor.fetchone()
                             
@@ -79,7 +82,7 @@ def load_json(path):
                         root_data["svgArr"].append(label_data)
                         
                 with connection.cursor() as cursor:
-                    sql = "SELECT * FROM product_record_detail WHERE pid = 8927;"
+                    sql = "SELECT * FROM product_record_detail WHERE pid = 8928;"
                     cursor.execute(sql)
                     product_data = cursor.fetchall()
                     for pdata in product_data:
