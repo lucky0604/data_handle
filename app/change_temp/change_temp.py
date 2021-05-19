@@ -26,12 +26,12 @@ kelvin_table = {
     10000: (204,219,255)}
 
 def convert_temp(image, temp):
-    print(kelvin_table[temp], ' ------------- kelvin table --------------')
+
     convert_image = Image.open(image)
     r, g, b = kelvin_table[temp]
-    matrix = ( r / 255.0, 0.0, 0.0, 0.0,
-               0.0, g / 255.0, 0.0, 0.0,
-               0.0, 0.0, b / 255.0, 0.0 )
+    matrix = ( 255.0 / r, 0.0, 0.0, 0.0,
+               0.0, 209.0 / g, 0.0, 0.0,
+               0.0, 0.0, 163.0 / b, 0.0 )
 
     return convert_image.convert('RGB', matrix)
 
@@ -39,12 +39,14 @@ def change_temp(folder):
     for root, folder, filenames in os.walk(folder):
         print(root, ' ------- root ----------')
         print(" ============================== ")
-        print(folder, ' ----------- folder ----------')
-        print(" ==============================")
-        print(filenames, ' -------------- file name s ------------')
         for name in filenames:
-            after_image = convert_temp(os.path.join(root, name), 3500)
-            after_image.save('./output/' + name, 'JPEG', quality = 100, optimize = True, progressive = False)
-            print(after_image, ' --------- after convert -----------')
+            output_path = os.path.join('./output', root[8:])
+            root_name = os.path.join(root, name)
+            print(output_path)
+            if os.path.exists(output_path) == False:
+                os.makedirs(output_path)
+            after_image = convert_temp(os.path.join(root, name), 6000)
+            after_image.save(output_path + '/'  + name, 'JPEG', quality = 90, optimize = True, progressive = False)
+
 
 change_temp('./input')
