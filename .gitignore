@@ -12,3 +12,4 @@ share/
 etc/
 COPYING
 decode_rosbag/
+.env

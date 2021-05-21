@@ -39,13 +39,13 @@ def load_json(path):
                             sql = 'SELECT * FROM product WHERE id = 8928;'
                             cursor.execute(sql)
                             result = cursor.fetchone()
-                            
-                            
+                            count = count + 1
+                            print(count)
                             for j in json.loads(result["label"])["tools"]:
                                 if i["label"] in label_map:
                                     label_data["name"] = label_map[i["label"]]
                                 else:
-                                    label_data["name"] = j["name"]
+                                    label_data["name"] = i['label']
                             for j in json.loads(result["label"])["tools"]:
                                 if label_data["name"] == j["name"]:
                                     label_data["uuid"] = str(uuid.uuid4())
@@ -96,6 +96,8 @@ def load_json(path):
                             except:
                                 raise "failed"
                             print(str(root_data).replace("'", '"'), ' ------------ root data ==========')
+                    cursor.close()
+                            
 
 
 # with connection.cursor() as cursor:
