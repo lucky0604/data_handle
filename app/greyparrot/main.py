@@ -14,9 +14,20 @@ def changeId(path):
             with open(filepath,'r') as f:
                 oldfile = json.load(f)
                 categories = []
+
+                for i in oldfile['images']:
+                    i['file_name'] = i['file_name'].split('-')[-1]
+                    i['file'] = 'Master.MR.2/' + '/'.join(i['file'].split('-')[1:])
+
+
                 for c in oldfile['categories']:
                     categ_info={}
                     categ_info['name']=c['name']
+                    for ch in c['name']:
+                        if u'\u4e00' <= ch <= u'\u9fff':
+                            return False
+                        else:
+                            print('no Chinese')
                     categ_info['id']=c['id']
                     categories.append(categ_info)
 
