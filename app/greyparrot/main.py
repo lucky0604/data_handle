@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 #   Greyparrot 标签修改
-import os 
-import os.path 
+import os
+import os.path
 import json
 # from collections import defaultdict
 
@@ -32,4 +32,3 @@ def changeId(path):
 
 path = './Json/'
 changeId(path)
-
