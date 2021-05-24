@@ -31,10 +31,12 @@ def load_json(path):
                     json_data = json.load(f)
                     shape_data = json_data["shapes"]
                     for i in shape_data:
+                        count = count + 1
+                        print(count, ' count =======')
                         label_data = dict()
                         # print(i, ' ---------- shape item ------')
                         with connection.cursor() as cursor:
-                            sql = 'SELECT * FROM product WHERE id = 8927;'
+                            sql = 'SELECT * FROM product WHERE id = 8928;'
                             cursor.execute(sql)
                             result = cursor.fetchone()
                             count = count + 1
@@ -43,7 +45,7 @@ def load_json(path):
                                 if i["label"] in label_map:
                                     label_data["name"] = label_map[i["label"]]
                                 else:
-                                    label_data["name"] = j["name"]
+                                    label_data["name"] = i['label']
                             for j in json.loads(result["label"])["tools"]:
                                 if label_data["name"] == j["name"]:
                                     label_data["uuid"] = str(uuid.uuid4())
@@ -80,7 +82,7 @@ def load_json(path):
                         root_data["svgArr"].append(label_data)
                         
                 with connection.cursor() as cursor:
-                    sql = "SELECT * FROM product_record_detail WHERE pid = 8927;"
+                    sql = "SELECT * FROM product_record_detail WHERE pid = 8928;"
                     cursor.execute(sql)
                     product_data = cursor.fetchall()
                     for pdata in product_data:

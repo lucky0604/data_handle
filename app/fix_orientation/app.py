@@ -70,50 +70,50 @@ root_dir = os.path.dirname(bundle_dir)
 load_dotenv(os.path.join(root_dir, '.env'))
 
 # mysql connector
-config = {
-    'host': os.environ['MYSQL_HOST'],
-    'user': os.environ['MYSQL_USERNAME'],
-    'password': os.environ['MYSQL_PASSWORD'],
-    'database': os.environ['MYSQL_DATABASE'],
-    'charset': 'utf8'
-}
+# config = {
+#     'host': os.environ['MYSQL_HOST'],
+#     'user': os.environ['MYSQL_USERNAME'],
+#     'password': os.environ['MYSQL_PASSWORD'],
+#     'database': os.environ['MYSQL_DATABASE'],
+#     'charset': 'utf8'
+# }
 
-db = pymysql.connect(**config)
-cur = db.cursor()
+# db = pymysql.connect(**config)
+# cur = db.cursor()
 
-def fetch_imgurl():
-    sql = f'SELECT * FROM product_record_detail WHERE pid in {pids}'
-    cur.execute(sql)
-    result = cur.fetchall()
-    return result
+# def fetch_imgurl():
+#     sql = f'SELECT * FROM product_record_detail WHERE pid in {pids}'
+#     cur.execute(sql)
+#     result = cur.fetchall()
+#     return result
 
-'''
-height index is 19
-width index is 22
-imagepath index is 4
-'''
-def change_w_h():
-    res = fetch_imgurl()
-    for i in res:
-        img = Image.open(urllib.request.urlopen(i[4]))
-        try:
-            for orientation in ExifTags.TAGS.keys() : 
-                if ExifTags.TAGS[orientation]=='Orientation' : break 
-            exif=dict(img._getexif().items())
-            print(exif[orientation])
-            if exif[orientation] == 6 or exif[orientation] == 8:
-                i[19], i[22] = i[22], i[19]
-                width = i[22]
-                height = i[19]
-                image_id = i[0]
-                sql = f'UPDATE product_record_detail set width = {width}, height = {height} WHERE id = {image_id}'
-                cur.execute(sql)
-                cur.commit()
-        except:
-            pass
+# '''
+# height index is 19
+# width index is 22
+# imagepath index is 4
+# '''
+# def change_w_h():
+#     res = fetch_imgurl()
+#     for i in res:
+#         img = Image.open(urllib.request.urlopen(i[4]))
+#         try:
+#             for orientation in ExifTags.TAGS.keys() : 
+#                 if ExifTags.TAGS[orientation]=='Orientation' : break 
+#             exif=dict(img._getexif().items())
+#             print(exif[orientation])
+#             if exif[orientation] == 6 or exif[orientation] == 8:
+#                 i[19], i[22] = i[22], i[19]
+#                 width = i[22]
+#                 height = i[19]
+#                 image_id = i[0]
+#                 sql = f'UPDATE product_record_detail set width = {width}, height = {height} WHERE id = {image_id}'
+#                 cur.execute(sql)
+#                 cur.commit()
+#         except:
+#             pass
 
-    cur.close()
-    db.close()
+#     cur.close()
+#     db.close()
 
 def change_local():
     for root, dirs, files in os.walk('./data'):
@@ -127,15 +127,28 @@ def change_local():
                     print(exif[orientation])
                     print(os.path.join(root, filename))
                     if exif[orientation] == 6:
-                        img = img.rotate(-90)
-                    elif exif[orientation] == 8:
-                        img = img.rotate(90)
-                    elif exif[orientation] == 3:
-                        img = img.rotate(180)
+                        print(img.height)
+                        print(img.width)
+                        print('======= before ======')
+                        new_width = img.height
+                        new_height = img.width
+                        out = img.resize((new_width, new_height), Image.ANTIALIAS)
+                        out = out.rotate(-90)
+                        print(out.height)
+                        print(out.width)
+                        print('======== after =======')
+                    # elif exif[orientation] == 8:
+                    #     img.resize((img.height, img.width), Image.ANTIALIAS)
+                    #     img = img.rotate(90)
+                    # elif exif[orientation] == 3:
+                    #     img = img.rotate(180)
                     # img.save(os.path.join(root, filename))
-                    img.save('./output/' + filename)
+
+                    out.save('./output1/' + filename)
                 except:
                     pass
+
+
 
 if __name__ == '__main__':
     start_time = datetime.datetime.now()
