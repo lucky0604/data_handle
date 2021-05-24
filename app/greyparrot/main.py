@@ -17,7 +17,8 @@ def changeId(path):
 
                 for i in oldfile['images']:
                     i['file_name'] = i['file_name'].split('-')[-1]
-                    i['file'] = 'Master.MR.2/' + '/'.join(i['file'].split('-')[1:])
+                    if '-' in i['file']:
+                        i['file'] = 'Master.MR.2/' + '/'.join(i['file'].split('-')[1:])
 
 
                 for c in oldfile['categories']:

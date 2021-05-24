@@ -41,12 +41,14 @@ split_dir_num = 2
 def flatten_directories(path):
     for root, dirs, files in os.walk(path):
         sub_dir = root.split('/')
-        if len(sub_dir) == 6:
+        if len(sub_dir) == 7:
             sub_dir_list.append(root)
     for i in range(split_dir_num):
         output_path = './output/' + str(i + 1)
         if not os.path.exists(output_path):
             os.makedirs(output_path)
+
+    print(sub_dir_list, '---------- sub dir list ---------')
 
     for i in range(split_dir_num):
         result_list = sub_dir_list[math.floor(i / split_dir_num * len(sub_dir_list)) : math.floor((i + 1) / split_dir_num * len(sub_dir_list))]
