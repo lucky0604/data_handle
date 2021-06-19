@@ -13,7 +13,7 @@ def pick_imgs(path):
                     exif=dict(img._getexif().items())
                     if exif[orientation] == 6:
                         root_name = root[2:]
-                        output_path = os.path.join('./output', root_name)
+                        output_path = os.path.join('./output_bak', root_name)
                         print(output_path)
                         if os.path.exists(output_path) == False:
                             os.makedirs(output_path)

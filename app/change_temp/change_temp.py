@@ -37,16 +37,12 @@ def convert_temp(image, temp):
 
 def change_temp(folder):
     for root, folder, filenames in os.walk(folder):
-        print(root, ' ------- root ----------')
-        print(" ============================== ")
         for name in filenames:
             output_path = os.path.join('./output', root[8:])
-            root_name = os.path.join(root, name)
-            print(output_path)
-            if os.path.exists(output_path) == False:
+            if not os.path.exists(output_path):
                 os.makedirs(output_path)
+            print(output_path, ' --- output_bak path ---')
             after_image = convert_temp(os.path.join(root, name), 6000)
             after_image.save(output_path + '/'  + name, 'JPEG', quality = 90, optimize = True, progressive = False)
-
 
 change_temp('./input')

@@ -11,13 +11,13 @@ files_arr = []
 '''
 usage:
 split images into several dirs by images average number
-e.g: input: Master.MR.RE/mrf_data/24/multiple dirs  output: 1/ 2/ 3/
+e.g: input: Master.MR.RE/mrf_data/24/multiple dirs  output_bak: 1/ 2/ 3/
 '''
 # def flatten_directories(path):
 #     for root, dirs, files in os.walk(path):
 #
 #         for i in range(output_dir_num):
-#             output_path = './output/' + str(i + 1)
+#             output_path = './output_bak/' + str(i + 1)
 #             if os.path.exists(output_path) == False:
 #                 os.makedirs(output_path)
 #         for filename in files:
@@ -28,15 +28,15 @@ e.g: input: Master.MR.RE/mrf_data/24/multiple dirs  output: 1/ 2/ 3/
 #         for j in result_list:
 #             output_name = '-'.join(j.split('/')[2:])
 #             print(output_name)
-#             copyfile(j, './output/' + str(i + 1) + '/' + output_name)
+#             copyfile(j, './output_bak/' + str(i + 1) + '/' + output_name)
 
 '''
 usage:
 merge subdirs into specific dir number
-e.g: input: Master.MR.RE/mrf_data/24/multiple dirs  output: 1/ 2/
+e.g: input: Master.MR.RE/mrf_data/24/multiple dirs  output_bak: 1/ 2/
 '''
 sub_dir_list = []
-split_dir_num = 2
+split_dir_num = 6
 
 def flatten_directories(path):
     for root, dirs, files in os.walk(path):
@@ -48,7 +48,7 @@ def flatten_directories(path):
         if not os.path.exists(output_path):
             os.makedirs(output_path)
 
-    print(sub_dir_list, '---------- sub dir list ---------')
+    sub_dir_list.sort(key = lambda keys: [i.split('/')[-1] for i in keys])
 
     for i in range(split_dir_num):
         result_list = sub_dir_list[math.floor(i / split_dir_num * len(sub_dir_list)) : math.floor((i + 1) / split_dir_num * len(sub_dir_list))]

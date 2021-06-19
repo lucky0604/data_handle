@@ -10,9 +10,9 @@ def rebuild_directories(path):
             folder_path = '/'.join(filename.split('-')[:len(filename.split('-')) - 1])
             output_file = filename.split('-')[-1]
             print(folder_path)
-            if os.path.exists('./output/' + folder_path) == False:
-                os.makedirs('./output/' + folder_path)
-            copyfile(os.path.join(root, filename), os.path.join('./output/' + folder_path, output_file))
+            if os.path.exists('./output_bak/' + folder_path) == False:
+                os.makedirs('./output_bak/' + folder_path)
+            copyfile(os.path.join(root, filename), os.path.join('./output_bak/' + folder_path, output_file))
 
 
 if __name__ == '__main__':
