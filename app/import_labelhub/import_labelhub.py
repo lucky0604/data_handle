@@ -16,7 +16,17 @@ label_map = {
     'pet_bottles_clear': 'clear_pet_bottles_food',
     'plastic_bottles_coloured': 'coloured_pet_bottles_nonfood',
     'plastic_pots_tubs_trays': 'other_plastic',
-    'uncertain': 'uncertain_class'
+    'uncertain': 'uncertain_class',
+    '': 'fines',
+    'clear_containerclear_container': 'clear_container',
+    'uncertain_plastic': 'uncertain_plastic_bottle',
+    'eoffice_paper': 'office_paper',
+    'fiens': 'fines',
+    'clear_container.': 'clear_container',
+    'vclear_pet_bottles_food': 'clear_pet_bottles_food',
+    'v': 'fines',
+    'uncretain_class': 'uncertain_class',
+    'clear_pet_bottles_foodv': 'clear_pet_bottles_food'
 }
 
 def load_json(path):
@@ -36,7 +46,7 @@ def load_json(path):
                         label_data = dict()
                         # print(i, ' ---------- shape item ------')
                         with connection.cursor() as cursor:
-                            sql = 'SELECT * FROM product WHERE id = 8928;'
+                            sql = 'SELECT * FROM product WHERE id = 10509;'
                             cursor.execute(sql)
                             result = cursor.fetchone()
                             count = count + 1
@@ -80,7 +90,7 @@ def load_json(path):
                                     label_data["data"].append(point4)
                             cursor.close()
                         root_data["svgArr"].append(label_data)
-                        
+
                 with connection.cursor() as cursor:
                     sql = "SELECT * FROM product_record_detail WHERE pid = 8928;"
                     cursor.execute(sql)
@@ -92,12 +102,12 @@ def load_json(path):
                             try:
                                 cursor.execute(update_sql)
                                 connection.commit()
-                                
+
                             except:
                                 raise "failed"
                             print(str(root_data).replace("'", '"'), ' ------------ root data ==========')
                     cursor.close()
-                            
+
 
 
 # with connection.cursor() as cursor:
