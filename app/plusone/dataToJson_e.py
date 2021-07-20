@@ -20,7 +20,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class DataTransfer:
 
     def getData(self):
-        r = requests.post('https://app.labelhub.cn/api/product/productDataJson?pid=9515&status=1&check=1', verify=False)
+        r = requests.post('https://app.labelhub.cn/api/product/productDataJson?pid=9983&status=1&check=1', verify=False)
         # r = http.request(
         #     'POST', 'http://app.labelhub.cn/api/product/productDataJson?pid=5679')
         json_data = json.loads(r.text)    # str to dict
@@ -60,7 +60,7 @@ class DataTransfer:
             data_json['flags'] = {}
             data_json['imageWidth'] = i['width']
             data_json['imageHeight'] = i['height']
-            with open('./9515/' + i['iname'].split('.')[0] + '.json', 'w') as f:
+            with open('./9983/' + i['iname'].split('.')[0] + '.json', 'w') as f:
                 json.dump(data_json, f, indent = 4)
 
 transDir = DataTransfer()

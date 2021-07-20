@@ -36,7 +36,7 @@ merge subdirs into specific dir number
 e.g: input: Master.MR.RE/mrf_data/24/multiple dirs  output_bak: 1/ 2/
 '''
 sub_dir_list = []
-split_dir_num = 6
+split_dir_num = 10
 
 def flatten_directories(path):
     for root, dirs, files in os.walk(path):

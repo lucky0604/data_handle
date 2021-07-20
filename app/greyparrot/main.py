@@ -40,7 +40,7 @@ def changeId(path):
                         if u'\u4e00' <= ch <= u'\u9fff':
                             return False
                         else:
-                            print('no Chinese')
+                            print('no Chinese ')
                     categ_info['id']=c['id']
                     categories.append(categ_info)
 
@@ -48,7 +48,6 @@ def changeId(path):
                     for b in categories:
                         if a['category_id'] == b['name']:
                             a['category_id']=b['id']
-
 
                 with open(filepath,'w') as f:
                     json.dump(oldfile, f, indent = 4)
