@@ -16,15 +16,23 @@ def changeId(path):
                 categories = []
 
                 for i in oldfile['images']:
-                    i['file_name'] = i['file_name'].split('-')[-1]
+                    filename = i['file_name']
+                    i['file_name'] = filename.split('-')[-1]
+                    '''
                     if '-' in i['file']:
                         i['file'] = 'Master.MR.1.RE/' + '/'.join(i['file'].split('-')[1:])
                     '''
                     # for p7
                     if '-' in i['file']:
                         i['file'] = 'Master.MR.2/' + '/'.join(i['file'].split('-')[1:])
-                    '''
 
+                    # handle the B.Fraction.MR.1 start file
+                    else:
+                        #i['file'] = '/'.join(i['file'].split('-'))
+                        i['file'] = filename[0:15] + '/' + filename[16:21] + '/' + '/'.join(filename[22:].split('-'))
+                        i['file'] = list(i['file'])
+                        i['file'][21] = '-'
+                        i['file'] = ''.join(i['file'])
 
                 for c in oldfile['categories']:
                     categ_info={}
